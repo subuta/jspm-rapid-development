@@ -115,8 +115,23 @@ System.import('example/app.js');
 ```
 
 ## step4 - Reactのインストールと設定
+Reactを使うためにはbabelのJSXプラグインを使います。
 ```
 jspm i npm:react npm:react-dom npm:babel-plugin-transform-class-properties npm:babel-plugin-transform-react-jsx
+```
+
+```
+#以下の設定を`jspm.config.js`のSystemJS.configに追加しましょう。（transpilerの設定と同じ位置でOK）
+"babelOptions": {
+  "plugins": [
+    "babel-plugin-transform-class-properties",
+    "babel-plugin-transform-react-jsx"
+  ],
+  "optional": [
+    "runtime",
+    "optimisation.modules.system"
+  ]
+}
 ```
 
 ```
@@ -140,6 +155,18 @@ ReactDOM.render(<Application />, container);
 
 console.log('app loaded!');
 EOF
+```
+
+```
+caddy
+```
+
+## step5 - ロード時間の短縮(bundlingの追加)
+```
+jspm bundle example/app.js -wid
+
+#bundleをやめる時
+jspm unbundle example/app.js
 ```
 
 ```

@@ -4,16 +4,6 @@ SystemJS.config({
       "npm:": "/jspm_packages/npm/",
       "github:": "/jspm_packages/github/",
       "app/": "/src/"
-    },
-    "babelOptions": {
-      "plugins": [
-        "babel-plugin-transform-class-properties",
-        "babel-plugin-transform-react-jsx"
-      ],
-      "optional": [
-        "runtime",
-        "optimisation.modules.system"
-      ]
     }
   },
   nodeConfig: {
@@ -29,6 +19,16 @@ SystemJS.config({
     }
   },
   transpiler: "plugin-babel",
+  babelOptions: {
+    "plugins": [
+      "babel-plugin-transform-class-properties",
+      "babel-plugin-transform-react-jsx"
+    ],
+    "optional": [
+      "runtime",
+      "optimisation.modules.system"
+    ]
+  },
   packages: {
     "app": {
       "main": "app.js",

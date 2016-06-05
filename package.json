@@ -1,4 +1,8 @@
 {
+  "scripts": {
+    "bundle": "jspm bundle example/app.js -wid",
+    "unbundle": "jspm unbundle example/app.js"
+  },
   "jspm": {
     "name": "app",
     "main": "app.js",
@@ -66,5 +70,6 @@
   },
   "devDependencies": {
     "jspm-caddy-hmr": "^0.1.15"
-  }
+  },
+  "dependencies": {}
 }
