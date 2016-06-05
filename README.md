@@ -68,6 +68,7 @@ cat << EOF > index.html
 </head>
 <body>
 <h1>jspmで爆速開発</h1>
+<div id="app-container"></div>
 <script>
 //    if (location.origin.match(/localhost/)) {
 //        System.trace = true;
@@ -90,7 +91,7 @@ caddy
 
 ## step3 - HMR(Hot Module Reloading)の設定
 今回は説明を簡単にするために自前のもの[jspm-caddy-hmr](https://github.com/subuta/jspm-caddy-hmr)を使ってますが、
-Productionで使ってくならこの辺がオススメです。
+Productionで使ってくならこの辺を使いましょう。
 - [systemjs-hot-reloader](https://github.com/capaj/systemjs-hot-reloader)
 
 ```
@@ -115,5 +116,32 @@ System.import('example/app.js');
 
 ## step4 - Reactのインストールと設定
 ```
-jspm i npm:react
+jspm i npm:react npm:react-dom npm:babel-plugin-transform-class-properties npm:babel-plugin-transform-react-jsx
+```
+
+```
+cat << EOF > example/app.js
+import React, { Component } from 'react';
+import ReactDOM from 'react-dom';
+
+class Application extends Component {
+    render() {
+        return (
+            <div>
+                <h1>My React Application</h1>
+            </div>
+        );
+    }
+}
+
+const container = document.querySelector('#app-container');
+
+ReactDOM.render(<Application />, container);
+
+console.log('app loaded!');
+EOF
+```
+
+```
+caddy
 ```
