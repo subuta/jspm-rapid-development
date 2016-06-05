@@ -98,9 +98,25 @@ Productionで使ってくならこの辺を使いましょう。
 
 ```
 # jspm-caddy-hmr(クライアントのインストール)
-jspm i npm:jspm-caddy-hmr
+jspm i npm:jspm-caddy-hmr css
 # jspm-caddy-hmr(サーバのインストール)
 npm install jspm-caddy-hmr --save-dev
+```
+
+```
+cat << EOF > example/app.css
+body {
+    background-color: #dddddd;
+}
+EOF
+```
+
+```
+cat << EOF > example/app.js
+import "example/app.css!";
+
+console.log('app loaded!');
+EOF
 ```
 
 ```
@@ -141,6 +157,7 @@ jspm i npm:react npm:react-dom npm:babel-plugin-transform-class-properties npm:b
 cat << EOF > example/app.js
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
+import "example/app.css!";
 
 class Application extends Component {
     render() {
