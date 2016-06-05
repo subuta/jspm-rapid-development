@@ -1,0 +1,9 @@
+{
+  "jspm": {
+    "name": "app",
+    "main": "app.js",
+    "devDependencies": {
+      "plugin-babel": "npm:systemjs-plugin-babel@^0.0.12"
+    }
+  }
+}
