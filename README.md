@@ -9,12 +9,12 @@ jspmで爆速開発していきましょう！
 ```
 
 # demoの流れ
-step1 - jspmプロジェクトの作成
-step2 - Caddyの設定
-step3 - HMR(Hot Module Reloading)の設定
-step4 - Reactのインストールと設定
-step5 - ロード時間の短縮(bundlingの追加)
-step6 - リリース
+- step1 - jspmプロジェクトの作成
+- step2 - Caddyの設定
+- step3 - HMR(Hot Module Reloading)の設定
+- step4 - Reactのインストールと設定
+- step5 - ロード時間の短縮(bundlingの追加)
+- step6 - リリース
 
 # 手順
 ## step1 - jspmプロジェクトの作成
@@ -92,7 +92,7 @@ caddy
 ```
 
 ## step3 - HMR(Hot Module Reloading)の設定
-今回は説明を簡単にするために自前のもの[jspm-caddy-hmr](https://github.com/subuta/jspm-caddy-hmr)を使ってますが、
+今回は説明を簡単にするために自前のもの[jspm-caddy-hmr](https://github.com/subuta/jspm-caddy-hmr)を使ってますが、<br/>
 Productionで使ってくならこの辺を使いましょう。
 - [systemjs-hot-reloader](https://github.com/capaj/systemjs-hot-reloader)
 
@@ -118,6 +118,7 @@ System.import('example/app.js');
 
 ## step4 - Reactのインストールと設定
 Reactを使うためにはbabelのJSXプラグインを使います。
+※systemjsのplugin-jsxは何か動かなかったりするので、こっちの方法がオススメ。
 ```
 jspm i npm:react npm:react-dom npm:babel-plugin-transform-class-properties npm:babel-plugin-transform-react-jsx
 ```
