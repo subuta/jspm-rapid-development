@@ -54,6 +54,7 @@ rewrite {
   to /index.html?{query}
 }
 EOF
+```
 
 ```
 cat << EOF > index.html
