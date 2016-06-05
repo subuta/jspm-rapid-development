@@ -15,7 +15,7 @@ step3 - HMR(Hot Module Reloading)の設定
 step4 - Reactのインストールと設定
 
 # 手順
-- step1
+## step1 - jspmプロジェクトの作成
 ```
 git clone https://github.com/subuta/jspm-rapid-development
 
@@ -33,7 +33,7 @@ SystemJS.config local package main [app.js]: app.js
 SystemJS.config transpiler (Babel, Traceur, TypeScript, None) [babel]: babel
 ```
 
-- step2
+## step2 - Caddyの設定
 ```
 brew install caddy
 ```
@@ -47,7 +47,7 @@ browse
 ext .html
 log / stdout "{method} {uri} {latency}"
 
-websocket /watch "node jspm-caddy-hmr.js"
+websocket /watch "node ./node_modules/.bin/jspm-caddy-hmr"
 
 rewrite {
   regexp (^/$)
@@ -71,13 +71,9 @@ cat << EOF > index.html
 <script>
 //    if (location.origin.match(/localhost/)) {
 //        System.trace = true;
-//        try {
-//            System.import('jspm-caddy-hmr').then(function(Watcher){
-//                new Watcher.default('/watch');
-//            });
-//        } catch(err) {
-//            console.log(err);
-//        }
+//        System.import('jspm-caddy-hmr').then(function(Watcher){
+//          new Watcher.default('/watch');
+//        });
 //    }
     System.import('example/app.js');
 </script>
@@ -90,4 +86,34 @@ EOF
 mkdir example
 echo "console.log('app loaded!');" > example/app.js
 caddy
+```
+
+## step3 - HMR(Hot Module Reloading)の設定
+今回は説明を簡単にするために自前のもの[jspm-caddy-hmr](https://github.com/subuta/jspm-caddy-hmr)を使ってますが、
+Productionで使ってくならこの辺がオススメです。
+- [systemjs-hot-reloader](https://github.com/capaj/systemjs-hot-reloader)
+
+```
+# jspm-caddy-hmr(クライアントのインストール)
+jspm i npm:jspm-caddy-hmr
+# jspm-caddy-hmr(サーバのインストール)
+npm install jspm-caddy-hmr --save-dev
+```
+
+```
+# index.html内のbody内のscriptタグを有効にする(uncomment)
+<script>
+if (location.origin.match(/localhost/)) {
+    System.trace = true;
+    System.import('jspm-caddy-hmr').then(function(Watcher){
+        new Watcher.default('/watch');
+    });
+}
+System.import('example/app.js');
+</script>
+```
+
+## step4 - Reactのインストールと設定
+```
+jspm i npm:react
 ```

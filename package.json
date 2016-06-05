@@ -2,8 +2,14 @@
   "jspm": {
     "name": "app",
     "main": "app.js",
+    "dependencies": {
+      "jspm-caddy-hmr": "npm:jspm-caddy-hmr@^0.1.15"
+    },
     "devDependencies": {
       "plugin-babel": "npm:systemjs-plugin-babel@^0.0.12"
     }
+  },
+  "devDependencies": {
+    "jspm-caddy-hmr": "^0.1.15"
   }
 }

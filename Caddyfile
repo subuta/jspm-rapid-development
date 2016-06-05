@@ -5,7 +5,7 @@ browse
 ext .html
 log / stdout "{method} {uri} {latency}"
 
-websocket /watch "node jspm-caddy-hmr.js"
+websocket /watch "node ./node_modules/.bin/jspm-caddy-hmr"
 
 rewrite {
   regexp (^/$)

@@ -9,16 +9,12 @@
 <body>
 <h1>jspmで爆速開発</h1>
 <script>
-    //    if (location.origin.match(/localhost/)) {
-    //        System.trace = true;
-    //        try {
-    //            System.import('jspm-caddy-hmr').then(function(Watcher){
-    //                new Watcher.default('/watch');
-    //            });
-    //        } catch(err) {
-    //            console.log(err);
-    //        }
-    //    }
+    if (location.origin.match(/localhost/)) {
+        System.trace = true;
+        System.import('jspm-caddy-hmr').then(function(Watcher){
+            new Watcher.default('/watch');
+        });
+    }
     System.import('example/app.js');
 </script>
 </body>
