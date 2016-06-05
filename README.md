@@ -13,6 +13,8 @@ step1 - jspmプロジェクトの作成
 step2 - Caddyの設定
 step3 - HMR(Hot Module Reloading)の設定
 step4 - Reactのインストールと設定
+step5 - ロード時間の短縮(bundlingの追加)
+step6 - リリース
 
 # 手順
 ## step1 - jspmプロジェクトの作成
@@ -149,9 +151,16 @@ class Application extends Component {
     }
 }
 
-const container = document.querySelector('#app-container');
+const onDOMReady = () => {
+    const container = document.querySelector('#app-container');
+    ReactDOM.render(<Application />, container);
+};
 
-ReactDOM.render(<Application />, container);
+if (document.readyState === 'complete' || document.readyState !== 'loading') {
+    onDOMReady();
+} else {
+    document.addEventListener('DOMContentLoaded', onDOMReady);
+}
 
 console.log('app loaded!');
 EOF
@@ -171,4 +180,27 @@ jspm unbundle example/app.js
 
 ```
 caddy
+```
+
+## step6 - リリース
+```
+mkdir dist
+jspm build example/app.js dist/bundled.js --format umd --skip-source-maps --minify
+```
+
+```
+cat << EOF > index.html
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="dist/bundled.js"></script>
+    <title>jspm-rapid-development</title>
+</head>
+<body>
+<h1>jspmで爆速開発</h1>
+<div id="app-container"></div>
+</body>
+</html>
+EOF
 ```

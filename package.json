@@ -1,7 +1,8 @@
 {
   "scripts": {
     "bundle": "jspm bundle example/app.js -wid",
-    "unbundle": "jspm unbundle example/app.js"
+    "unbundle": "jspm unbundle example/app.js",
+    "build": "jspm build example/app.js dist/bundled.js --format umd --skip-source-maps --minify"
   },
   "jspm": {
     "name": "app",

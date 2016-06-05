@@ -11,8 +11,15 @@ class Application extends Component {
     }
 }
 
-const container = document.querySelector('#app-container');
+const onDOMReady = () => {
+    const container = document.querySelector('#app-container');
+    ReactDOM.render(<Application />, container);
+};
 
-ReactDOM.render(<Application />, container);
+if (document.readyState === 'complete' || document.readyState !== 'loading') {
+    onDOMReady();
+} else {
+    document.addEventListener('DOMContentLoaded', onDOMReady);
+}
 
 console.log('app loaded!');
