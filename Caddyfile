@@ -1,0 +1,13 @@
+localhost:3000
+
+gzip
+browse
+ext .html
+log / stdout "{method} {uri} {latency}"
+
+websocket /watch "node jspm-caddy-hmr.js"
+
+rewrite {
+  regexp (^/$)
+  to /index.html?{query}
+}

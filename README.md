@@ -4,6 +4,7 @@ jspmで爆速開発していきましょう！
 # 必要なもの
 ```
 - node(v5.5.0)
+- homebrew(v0.9.9)
 - Mac El Capitan(の前提で進めています。Windowsの場合は色々読み変えてください)
 ```
 
@@ -17,6 +18,7 @@ step4 - Reactのインストールと設定
 - step1
 ```
 git clone https://github.com/subuta/jspm-rapid-development
+
 jspm init
 # (プロンプトは全部デフォルト値(Enter)で進める。)
 Package.json file does not exist, create it? [Yes]: Yes
@@ -29,4 +31,62 @@ SystemJS.config browser baseURL (optional): /
 SystemJS.config Node local project path [src/]: src/
 SystemJS.config local package main [app.js]: app.js
 SystemJS.config transpiler (Babel, Traceur, TypeScript, None) [babel]: babel
+```
+
+- step2
+```
+brew install caddy
+```
+
+```
+cat << EOF > Caddyfile
+localhost:3000
+
+gzip
+browse
+ext .html
+log / stdout "{method} {uri} {latency}"
+
+websocket /watch "node jspm-caddy-hmr.js"
+
+rewrite {
+  regexp (^/$)
+  to /index.html?{query}
+}
+EOF
+
+```
+cat << EOF > index.html
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+     <script src="jspm_packages/system.js"></script>
+     <script src="jspm.config.js"></script>
+    <title>jspm-rapid-development</title>
+</head>
+<body>
+<h1>jspmで爆速開発</h1>
+<script>
+//    if (location.origin.match(/localhost/)) {
+//        System.trace = true;
+//        try {
+//            System.import('jspm-caddy-hmr').then(function(Watcher){
+//                new Watcher.default('/watch');
+//            });
+//        } catch(err) {
+//            console.log(err);
+//        }
+//    }
+    System.import('example/app.js');
+</script>
+</body>
+</html>
+EOF
+```
+
+```
+mkdir example
+echo "console.log('app loaded!');" > example/app.js
+caddy
 ```
