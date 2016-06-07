@@ -20,7 +20,7 @@ jspmで爆速開発していきましょう！
 ## step1 - jspmプロジェクトの作成
 ```
 git clone https://github.com/subuta/jspm-rapid-development
-
+npm install jspm@beta -g
 jspm init
 # (プロンプトは全部デフォルト値(Enter)で進める。)
 Package.json file does not exist, create it? [Yes]: Yes
@@ -33,6 +33,9 @@ SystemJS.config browser baseURL (optional): /
 SystemJS.config Node local project path [src/]: src/
 SystemJS.config local package main [app.js]: app.js
 SystemJS.config transpiler (Babel, Traceur, TypeScript, None) [babel]: babel
+
+npm i
+jspm i
 ```
 
 ## step2 - Caddyの設定
