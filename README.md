@@ -172,6 +172,12 @@ class Application extends Component {
     }
 }
 
+export const _unload = () => {
+    const container = document.querySelector('#app-container');
+    // force unload React components
+    ReactDOM.unmountComponentAtNode(container); // your container node
+}
+
 const onDOMReady = () => {
     const container = document.querySelector('#app-container');
     ReactDOM.render(<Application />, container);

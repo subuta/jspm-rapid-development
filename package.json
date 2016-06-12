@@ -5,15 +5,19 @@
     "build": "jspm build example/app.js dist/bundled.js --format umd --skip-source-maps --minify"
   },
   "jspm": {
-    "name": "app",
     "main": "app.js",
+    "configFile": "jspm.config.js",
     "dependencies": {
       "babel-plugin-transform-class-properties": "npm:babel-plugin-transform-class-properties@^6.9.1",
       "babel-plugin-transform-react-jsx": "npm:babel-plugin-transform-react-jsx@^6.8.0",
-      "jspm-caddy-hmr": "npm:jspm-caddy-hmr@^0.2.2",
+      "css": "github:systemjs/plugin-css@^0.1.23",
+      "jspm-caddy-hmr": "npm:jspm-caddy-hmr@^0.2.3",
+      "react": "npm:react@^15.1.0",
       "react-dom": "npm:react-dom@^15.1.0"
     },
     "devDependencies": {
+      "babel-runtime": "npm:babel-runtime@^5.8.24",
+      "core-js": "npm:core-js@^1.1.4",
       "plugin-babel": "npm:systemjs-plugin-babel@^0.0.12"
     },
     "peerDependencies": {
@@ -29,7 +33,6 @@
       "https": "github:jspm/nodelibs-https@^0.2.0-alpha",
       "path": "github:jspm/nodelibs-path@^0.2.0-alpha",
       "process": "github:jspm/nodelibs-process@^0.2.0-alpha",
-      "react": "npm:react@^15.1.0",
       "stream": "github:jspm/nodelibs-stream@^0.2.0-alpha",
       "string_decoder": "github:jspm/nodelibs-string_decoder@^0.2.0-alpha",
       "url": "github:jspm/nodelibs-url@^0.2.0-alpha",
@@ -38,6 +41,13 @@
       "zlib": "github:jspm/nodelibs-zlib@^0.2.0-alpha"
     },
     "overrides": {
+      "npm:babel-runtime@5.8.38": {
+        "main": false,
+        "dependencies": {},
+        "optionalDependencies": {
+          "core-js": "^1.2.0"
+        }
+      },
       "npm:browserify-zlib@0.1.4": {
         "dependencies": {
           "readable-stream": "^2.0.2",
@@ -63,7 +73,11 @@
       },
       "npm:inherits@2.0.1": {
         "ignore": [
-          "test.js"
+          "test.js",
+          "node_modules",
+          "node_modules",
+          "node_modules",
+          "node_modules"
         ]
       },
       "npm:ms@0.7.1": {
@@ -73,7 +87,8 @@
     }
   },
   "devDependencies": {
-    "jspm-caddy-hmr": "^0.1.15"
+    "jspm": "^0.17.0-beta.20",
+    "jspm-caddy-hmr": "^0.2.3"
   },
   "dependencies": {}
 }
