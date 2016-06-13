@@ -1,6 +1,9 @@
 # jspm-rapid-development
 jspmで爆速開発していきましょう！
 
+# TODO
+- Remove --skip-rollup from `npm run build` (after https://github.com/jspm/jspm-cli/issues/1805 and https://github.com/rollup/rollup/issues/650 fixed)
+
 # 必要なもの
 ```
 - node(v5.5.0)

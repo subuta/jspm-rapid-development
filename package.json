@@ -2,7 +2,7 @@
   "scripts": {
     "bundle": "jspm bundle example/app.js -wid",
     "unbundle": "jspm unbundle example/app.js",
-    "build": "jspm build example/app.js dist/bundled.js --format umd --skip-source-maps --minify"
+    "build": "jspm build example/app.js dist/bundled.js --skip-rollup --format umd --skip-source-maps --minify"
   },
   "jspm": {
     "main": "app.js",
@@ -87,7 +87,7 @@
     }
   },
   "devDependencies": {
-    "jspm": "^0.17.0-beta.20",
+    "jspm": "^0.17.0-beta.21",
     "jspm-caddy-hmr": "^0.2.3"
   },
   "dependencies": {}
