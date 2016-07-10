@@ -24,7 +24,9 @@ jspmで爆速開発していきましょう！
 ```
 git clone https://github.com/subuta/jspm-rapid-development
 npm install jspm@beta -g
+
 jspm init
+
 # (プロンプトは全部デフォルト値(Enter)で進める。)
 Package.json file does not exist, create it? [Yes]: Yes
 Init mode (Quick, Standard, Custom) [Quick]: Quick
@@ -94,6 +96,8 @@ EOF
 ```
 mkdir example
 echo "console.log('app loaded!');" > example/app.js
+
+# jspm/caddyインストール後の状態
 caddy
 ```
 
@@ -136,6 +140,11 @@ if (location.origin.match(/localhost/)) {
 }
 System.import('example/app.js');
 </script>
+```
+
+```
+# CSS / HMR追加後の状態
+caddy
 ```
 
 ## step4 - Reactのインストールと設定
@@ -197,6 +206,7 @@ EOF
 ```
 
 ```
+# React追加後の状態
 caddy
 ```
 
@@ -209,6 +219,7 @@ jspm unbundle example/app.js
 ```
 
 ```
+# bundle後の状態
 caddy
 ```
 
@@ -233,4 +244,9 @@ cat << EOF > index.html
 </body>
 </html>
 EOF
+```
+
+```
+# build後の状態
+caddy
 ```
