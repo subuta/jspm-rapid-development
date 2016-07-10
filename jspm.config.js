@@ -3,6 +3,9 @@ SystemJS.config({
     "github:": "jspm_packages/github/",
     "npm:": "jspm_packages/npm/"
   },
+  browserConfig: {
+    "baseURL": "/"
+  },
   devConfig: {
     "map": {
       "babel-runtime": "npm:babel-runtime@5.8.38",
