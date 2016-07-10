@@ -51,7 +51,7 @@ SystemJS.config({
     "fs": "github:jspm/nodelibs-fs@0.2.0-alpha",
     "http": "github:jspm/nodelibs-http@0.2.0-alpha",
     "https": "github:jspm/nodelibs-https@0.2.0-alpha",
-    "jspm-caddy-hmr": "npm:jspm-caddy-hmr@0.2.3",
+    "jspm-caddy-hmr": "npm:jspm-caddy-hmr@0.2.10",
     "path": "github:jspm/nodelibs-path@0.2.0-alpha",
     "process": "github:jspm/nodelibs-process@0.2.0-alpha",
     "react": "npm:react@15.1.0",
@@ -240,13 +240,6 @@ SystemJS.config({
         "whatwg-fetch": "npm:whatwg-fetch@1.0.0"
       }
     },
-    "npm:jspm-caddy-hmr@0.2.3": {
-      "map": {
-        "css": "github:systemjs/plugin-css@0.1.23",
-        "lodash": "npm:lodash@4.13.1",
-        "path": "npm:path@0.12.7"
-      }
-    },
     "npm:lodash@4.13.1": {
       "map": {}
     },
@@ -267,7 +260,7 @@ SystemJS.config({
     },
     "npm:path@0.12.7": {
       "map": {
-        "process": "npm:process@0.11.4",
+        "process": "npm:process@0.11.5",
         "util": "npm:util@0.10.3"
       }
     },
@@ -275,9 +268,6 @@ SystemJS.config({
       "map": {
         "systemjs-json": "github:systemjs/plugin-json@0.1.2"
       }
-    },
-    "npm:process@0.11.4": {
-      "map": {}
     },
     "npm:promise@7.1.1": {
       "map": {
@@ -340,14 +330,7 @@ SystemJS.config({
     },
     "github:jspm/nodelibs-buffer@0.2.0-alpha": {
       "map": {
-        "buffer-browserify": "npm:buffer@4.6.0"
-      }
-    },
-    "npm:buffer@4.6.0": {
-      "map": {
-        "ieee754": "npm:ieee754@1.1.6",
-        "isarray": "npm:isarray@1.0.0",
-        "base64-js": "npm:base64-js@1.1.2"
+        "buffer-browserify": "npm:buffer@4.7.0"
       }
     },
     "github:jspm/nodelibs-domain@0.2.0-alpha": {
@@ -555,6 +538,20 @@ SystemJS.config({
     "npm:hash.js@1.0.3": {
       "map": {
         "inherits": "npm:inherits@2.0.1"
+      }
+    },
+    "npm:jspm-caddy-hmr@0.2.10": {
+      "map": {
+        "path": "npm:path@0.12.7",
+        "lodash": "npm:lodash@4.13.1",
+        "css": "github:systemjs/plugin-css@0.1.23"
+      }
+    },
+    "npm:buffer@4.7.0": {
+      "map": {
+        "base64-js": "npm:base64-js@1.1.2",
+        "ieee754": "npm:ieee754@1.1.6",
+        "isarray": "npm:isarray@1.0.0"
       }
     }
   }
